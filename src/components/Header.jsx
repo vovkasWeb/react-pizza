@@ -1,5 +1,5 @@
 import Button from './Button'
-import logoSvg from './assets/img/pizza-logo.svg'
+import logoSvg from '../assets/img/pizza-logo.svg'
 
 const Header = () => {
 	return (
