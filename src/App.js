@@ -1,16 +1,18 @@
 import { useEffect, useState } from 'react'
 import { Header } from './components'
 import { Home, Cart } from './pages'
+import axios from 'axios'
+
 
 import { Route, Routes } from 'react-router-dom'
 
 function App() {
 	const [pizzas, setPizzas] = useState([])
 	useEffect(() => {
-		fetch('/db.json')
-			.then(res => res.json())
-			.then(json => setPizzas(json.pizzas))
-			.catch(e => console.error(e))
+		axios.get('/db.json').then(({ data }) => {
+			setPizzas(data.pizzas)
+		})
+	
 	}, [])
 
 	return (
