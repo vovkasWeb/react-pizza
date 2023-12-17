@@ -6,6 +6,7 @@ const PizzaBlock = ({ id, name, imageUrl, types, sizes, price }) => {
 	const availablesTypes = ['тонкое', 'традиционное']
 	const availableSizes = [26, 30, 40]
 
+	
 	const [activeType, setActiveType] = useState(types[0])
 	const [activeSize, setActiveSize] = useState(sizes[0])
 
