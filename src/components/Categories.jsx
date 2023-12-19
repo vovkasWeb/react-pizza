@@ -1,17 +1,24 @@
 // import styles from './Categories.module.css'
 
-import { useState } from 'react'
+import { memo, useState } from 'react'
 
-const Categories = ({ items, onClickItem }) => {
+const Categories = memo(({ items, onClickItem }) => {
 	const [activeItem, setActiveItem] = useState(null)
-	const onSelectItem= (index)=>{
+
+	const onSelectItem = index => {
 		setActiveItem(index)
+		onClickItem(index)
 	}
 
 	return (
 		<div className='categories'>
 			<ul>
-				<li onClick={() => onSelectItem(null)} className={activeItem === null ? 'active' : ''}>Все</li>
+				<li
+					onClick={() => onSelectItem(null)}
+					className={activeItem === null ? 'active' : ''}
+				>
+					Все
+				</li>
 				{items ? (
 					items.map((name, i) => (
 						<li
@@ -28,6 +35,5 @@ const Categories = ({ items, onClickItem }) => {
 			</ul>
 		</div>
 	)
-}
-
+})
 export default Categories
