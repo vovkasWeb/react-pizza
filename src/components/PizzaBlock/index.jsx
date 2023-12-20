@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
+import LoadingBlock from './LoadingBlock.jsx'
 
 const PizzaBlock = ({ id, name, imageUrl, types, sizes, price }) => {
 	const availablesTypes = ['тонкое', 'традиционное']
 	const availableSizes = [26, 30, 40]
 
-	
 	const [activeType, setActiveType] = useState(types[0])
 	const [activeSize, setActiveSize] = useState(sizes[0])
 
@@ -79,6 +79,7 @@ PizzaBlock.propTypes = {
 	types: PropTypes.arrayOf(PropTypes.number).isRequired,
 	sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
 	price: PropTypes.number, //.isRequired,
+
 }
 PizzaBlock.defaultProps = {
 	id: 1,
@@ -86,7 +87,6 @@ PizzaBlock.defaultProps = {
 	price: 0,
 	types: [],
 	size: [],
-	
 }
 
 export default PizzaBlock
