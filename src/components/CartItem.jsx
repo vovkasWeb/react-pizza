@@ -1,9 +1,25 @@
-import Button from "./Button"
+import Button from './Button'
 
-const CartItem = ({id, name, type, size, totalPrice, totalCount,onRemoveItem }) => {
-    const handelRemoveClick =()=>{
-        onRemoveItem(id)
-    }
+const CartItem = ({
+	id,
+	name,
+	type,
+	size,
+	totalPrice,
+	totalCount,
+	onRemoveItem,
+	onMinus,
+	onPlus,
+}) => {
+	const handelRemoveClick = () => {
+		onRemoveItem(id)
+	}
+	const handelPlusItem = () => {
+		onPlus(id)
+	}
+	const handelMinusItem = () => {
+		onMinus(id)
+	}
 	return (
 		<div className='cart__item'>
 			<div className='cart__item-img'>
@@ -22,6 +38,7 @@ const CartItem = ({id, name, type, size, totalPrice, totalCount,onRemoveItem }) 
 			<div className='cart__item-count'>
 				<div className='button button--outline button--circle cart__item-count-minus'>
 					<svg
+						onClick={handelMinusItem}
 						width='10'
 						height='10'
 						viewBox='0 0 10 10'
@@ -41,6 +58,7 @@ const CartItem = ({id, name, type, size, totalPrice, totalCount,onRemoveItem }) 
 				<b>{totalCount}</b>
 				<div className='button button--outline button--circle cart__item-count-plus'>
 					<svg
+						onClick={handelPlusItem}
 						width='10'
 						height='10'
 						viewBox='0 0 10 10'
@@ -61,7 +79,7 @@ const CartItem = ({id, name, type, size, totalPrice, totalCount,onRemoveItem }) 
 			<div className='cart__item-price'>
 				<b>{totalPrice} ₽</b>
 			</div>
-			<div className='cart__item-remove' >
+			<div className='cart__item-remove'>
 				<Button className='button--circle' onClick={handelRemoveClick} outline>
 					<svg
 						width='10'
